@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <title>Quer sair com o Yuyu ainda ?</title>
+    <title>Quer sair com o Yuyu ainda?</title>
 
     <style>
-        body{
+        body {
             background-color: rgb(0, 0, 0);
             font-family: 'Dancing Script', cursive;
         }
 
-        .painel{
+        .painel {
             margin: auto;
             background-color: white;
             width: 500px;
@@ -21,49 +21,156 @@
             border-radius: 20px;
             text-align: center;
             padding-top: 50px;
-            /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
         }
-        #sim{
+
+        #sim, #nao {
             height: 40px;
             width: 60px;
             background-color: rgb(0, 0, 0);
             border: 2px solid white;
             border-radius: 10px;
             color: white;
+        }
+
+        #sim {
             margin-left: -50px;
         }
-        #nao{
+
+        #nao {
             position: absolute;
-            height: 40px;
-            width: 60px;
-            background-color: rgb(0, 0, 0);
-            border: 2px solid white;
-            border-radius: 10px;
-            color: white;
             margin-left: 10px;
         }
 
+        /* Estilização romântica da tela de imagens */
+        .imagens-container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffebef;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ffb6c1;
+            max-width: 80%;
+            margin: auto;
+            position: relative;
+        }
+
+        .imagens-container h2 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .imagens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            justify-items: center;
+        }
+
+        .imagens-grid img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .imagens-container video {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 2px solid #ff69b4;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Corações flutuantes para um toque romântico */
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4;
+            animation: float 3s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .heart:nth-child(1) {
+            top: 5%;
+            left: 10%;
+            animation-duration: 4s;
+        }
+
+        .heart:nth-child(2) {
+            top: 15%;
+            right: 10%;
+            animation-duration: 5s;
+        }
+
+        .heart:nth-child(3) {
+            bottom: 20%;
+            left: 30%;
+            animation-duration: 6s;
+        }
     </style>
 
 </head>
 <body>
 
-    <div class="painel">
-        <h1> Tem planos para Proximo Domingo? kkk </h1>
+    <div class="painel" id="primeira-tela">
+        <h1>Tem planos para o próximo domingo? kkk</h1>
 
-        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="">
+        <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinho apaixonado">
 
-        <h2>Quer sair com o Yuyu ainda ? </h2>
-        
+        <h2>Quer sair com o Yuyu ainda?</h2>
 
-        <a href="https://www.youtube.com/watch?v=i248oAn11uU"><button id="sim" > Sim! </button></a>
-        <button onmouseover="fuja()" id="nao"> Não! </button>
-        
+        <button id="sim">Sim!</button>
+        <button onmouseover="fuja()" id="nao">Não!</button>
     </div>
 
+    <!-- Tela de imagens que aparecerá ao clicar em "Sim" -->
+    <div class="imagens-container" id="segunda-tela">
+        <h2>Nao é que vc aceitou sair Comigo KKKK. Lembraças do nosso dia 💖</h2>
+        <div class="imagens-grid">
+            <img src="img/date parque 7.jpg" alt="Gatinho 1">
+            <img src="img/date parque 3.jpg" alt="Gatinho 2">
+            <img src="img/date parque 4.jpg" alt="Gatinho 3">
+            <img src="img/date parque 5.jpg" alt="Gatinho 4">
+            <img src="img/date parque 6.jpg" alt="Gatinho 5">
+        </div>
+
+        <!-- Vídeo especial ajustado -->
+        <video controls>
+            <source src="img/date parque 1.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+
     <script>
-        function fuja(){
-            var botaoNao = document.getElementById("nao")
+        const botaoSim = document.getElementById('sim');
+        const primeiraTela = document.getElementById('primeira-tela');
+        const segundaTela = document.getElementById('segunda-tela');
+
+        botaoSim.addEventListener('click', function() {
+            // Oculta a primeira tela
+            primeiraTela.style.display = 'none';
+            // Exibe a segunda tela com as imagens e o vídeo
+            segundaTela.style.display = 'block';
+        });
+
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
 
             var larguraJanela = window.innerWidth;
             var alturaJanela = window.innerHeight;
@@ -76,13 +183,8 @@
 
             botaoNao.style.left = aleatorioX + "px";
             botaoNao.style.top = aleatorioY + "px";
-
-
         }
     </script>
 
-
-
-    
 </body>
 </html>
